@@ -12,8 +12,9 @@ namespace Activities_
             const string InitialMsg = "To access an activity enter wich one you want to access: ";
             const string MenuMsg = "Exercise {0} (Arrays): ";
             const string MenuMsgTwo = "Exercise {0} (Matrix): ";
+            const string ExitMsg = "Enter 0 to exit: ";
             const string Space = "----------------------------";
-            const int AuxNum = 6, AuxNumTwo = 8;
+            const int AuxNum = 7, AuxNumTwo = 9;
 
             var matrix_Exs = new Matrix_Exs();
             var array_Exs = new Array_Exs();
@@ -61,6 +62,7 @@ namespace Activities_
                         case 13: matrix_Exs.ExerciseSeven(); break;
                         case 14: matrix_Exs.ExerciseEigth(); break;
                     }
+                    convertedInput = int.Parse(Console.ReadLine());
                 }
             }
             catch (IOException)
