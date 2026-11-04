@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Array_Exercises.Exercices
+{
+    public class Array_Exs
+    {
+        public void ExerciseOne()
+        {
+
+        }
+        public void ExerciseTwo()
+        {
+
+        }
+        public void ExerciseThree()
+        {
+
+        }
+        public void ExerciseFour()
+        {
+
+        }
+        public void ExerciseFive()
+        {
+
+        }
+
+        public void ExerciseSix()
+        {
+
+        }
+    }
+}
