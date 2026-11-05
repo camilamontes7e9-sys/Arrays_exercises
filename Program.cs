@@ -62,6 +62,7 @@ namespace Activities_
                         case 13: matrix_Exs.ExerciseSeven(); break;
                         case 14: matrix_Exs.ExerciseEigth(); break;
                     }
+                    Console.WriteLine($"\n{ExitMsg}");
                     convertedInput = int.Parse(Console.ReadLine());
                 }
             }
