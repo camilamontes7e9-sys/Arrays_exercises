@@ -9,6 +9,7 @@ namespace Array_Exercises.Exercices
     public class Array_Exs
     {
         const string Space = "----------------------------";
+        public Random rnd = new Random();
         public void ExerciseOne()
         {
             const string ArrayMsg = "Array filled with randoms numbers:";
@@ -23,7 +24,7 @@ namespace Array_Exercises.Exercices
             int[] oddNum = new int[ArrayLength];
             int[] evenNum = new int[ArrayLength];
 
-            Random rnd = new Random();
+            
             int evenCount = 0, oddCount = 0, average = 0, minValue = 0, maxValue = 0;
 
 
@@ -162,7 +163,7 @@ namespace Array_Exercises.Exercices
             const string NotFoundMsg = "The number does not appear in the array"; 
             const int ArraySize = 10;
 
-            Random rnd = new Random();
+            
             int[] numbers = new int[ArraySize];
             int input;
             bool NumFound = false;
@@ -194,25 +195,74 @@ namespace Array_Exercises.Exercices
         }
         public void ExerciseFive()
         {
+            const string InitialMsg = "The mlutiplication table from 1-10 :";
             const int MatrixSize = 10;
 
             int[,] table = new int[MatrixSize, MatrixSize];
+
+            Console.WriteLine(InitialMsg);
 
             for (int i = 0; i < table.GetLength(0); i++)
             {
                 for(int j = 0; j < table.GetLength(1); j++)
                 {
                     table[i, j] = (i+1) * (j+1);
-                    Console.Write($"{table[i, j]}");
+                    Console.Write($"{table[i, j]}\t");
                 }
                 Console.WriteLine("");
             }
-
         }
 
         public void ExerciseSix()
         {
+            const string InitialMsg = "The current notes by students(rows) and subjects(columns) are: ";
+            const string AvgStudentMsg = "The average for the {0} student is {1:f2}";
+            const string AvgSubjectMsg = "The average for the {0} subject is {1:f2}";
+            const int MatrixColumns = 3, MatrixRows = 4;
+
+            double[,] table = new double[MatrixRows, MatrixColumns];
+            double average = 0, student = 0, averageSubject = 0;
+
+            Console.WriteLine(InitialMsg);
+
+            for (int i = 0; i < table.GetLength(0); i++)
+            {
+                for (int j = 0; j < table.GetLength(1); j++)
+                {
+                    table[i, j] = rnd.Next(11);
+                    Console.Write($"{table[i, j]}\t");
+                }
+                Console.WriteLine("");
+            }
+
+            Console.WriteLine("");
+
+            for (int i = 0; i < table.GetLength(0); i++)
+            {
+                for (int j = 0; j < table.GetLength(1); j++)
+                {
+                    average += table[i, j];
+                }
+                Console.WriteLine(AvgStudentMsg, i + 1, average / table.GetLength(1));
+                average = 0;
+
+            }
+
+            Console.WriteLine("");
+
+            for (int j = 0; j < table.GetLength(1); j++)
+            {
+                for (int i = 0; i < table.GetLength(0); i++)
+                {
+                    averageSubject += table[i, j];
+                }
+                Console.WriteLine(AvgSubjectMsg, j + 1, averageSubject / table.GetLength(0));
+                averageSubject = 0;
+
+            }
 
         }
+
+       
     }
 }

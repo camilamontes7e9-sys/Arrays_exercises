@@ -8,14 +8,6 @@ namespace Activities_
     {
         public static void Main()
         {
-            const string Menu = "------------MENU------------";
-            const string InitialMsg = "To access an activity enter wich one you want to access: ";
-            const string MenuMsg = "Exercise {0} (Arrays): ";
-            const string MenuMsgTwo = "Exercise {0} (Matrix): ";
-            const string ExitMsg = "Enter 0 to exit: ";
-            const string Space = "----------------------------";
-            const int AuxNum = 7, AuxNumTwo = 9;
-
             var matrix_Exs = new Matrix_Exs();
             var array_Exs = new Array_Exs();
             var errorManager = new ErrorManager();
@@ -25,19 +17,7 @@ namespace Activities_
 
             try
             {
-                Console.WriteLine($"\n{Menu} \n{InitialMsg} \n{Space}");
-
-                for (int i = 1; i < AuxNum; i++)
-                {
-                    Console.WriteLine(MenuMsg, i);
-                }
-
-                Console.WriteLine(Space);
-
-                for (int i = 1; i < AuxNumTwo; i++)
-                {
-                    Console.WriteLine(MenuMsgTwo, i);
-                }
+                PrintMenu();
 
                 input = Console.ReadLine();
 
@@ -62,8 +42,12 @@ namespace Activities_
                         case 13: matrix_Exs.ExerciseSeven(); break;
                         case 14: matrix_Exs.ExerciseEigth(); break;
                     }
-                    Console.WriteLine($"\n{ExitMsg}");
+
+                    Console.ReadKey();
+                    PrintMenu();
+
                     convertedInput = int.Parse(Console.ReadLine());
+                    Console.WriteLine("");
                 }
             }
             catch (IOException)
@@ -86,10 +70,32 @@ namespace Activities_
             {
                 errorManager.PrintError(ErrorManager.UnknownError);
             }
-
-            
         }
 
-        
+        public static void PrintMenu()
+        {
+            const string Menu = "------------MENU------------";
+            const string InitialMsg = "To access an activity enter wich one you want to access: ";
+            const string MenuMsg = "Exercise {0} (Arrays): ";
+            const string MenuMsgTwo = "Exercise {0} (Matrix): ";
+            const string ExitMsg = "Enter 0 to exit: ";
+            const string Space = "----------------------------";
+            const int AuxNum = 7, AuxNumTwo = 9;
+
+            Console.WriteLine($"\n{Menu} \n{InitialMsg} \n{Space}");
+
+            for (int i = 1; i < AuxNum; i++)
+            {
+                Console.WriteLine(MenuMsg, i);
+            }
+
+            Console.WriteLine(Space);
+
+            for (int i = 1; i < AuxNumTwo; i++)
+            {
+                Console.WriteLine(MenuMsgTwo, i);
+            }
+            Console.WriteLine($"\n{ExitMsg}");
+        }
     }
 }
