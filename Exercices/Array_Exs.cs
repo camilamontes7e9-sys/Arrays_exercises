@@ -223,7 +223,7 @@ namespace Array_Exercises.Exercices
             double[,] table = new double[MatrixRows, MatrixColumns];
             double average = 0, student = 0, averageSubject = 0;
 
-            Console.WriteLine(InitialMsg);
+            Console.WriteLine();
 
             for (int i = 0; i < table.GetLength(0); i++)
             {
