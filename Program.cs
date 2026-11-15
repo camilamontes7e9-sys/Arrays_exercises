@@ -1,6 +1,6 @@
 ﻿using System;
 using Array_Exercises.Exercices;
-using Array_Exercises;
+using Array_Exercices.Helpers;
 
 namespace Activities_
 {
@@ -8,16 +8,12 @@ namespace Activities_
     {
         public static void Main()
         {
-            var matrix_Exs = new Matrix_Exs();
-            var array_Exs = new Array_Exs();
-            var errorManager = new ErrorManager();
-
             string input = "";
             int convertedInput;
 
             try
             {
-                PrintMenu();
+                PrintManager.PrintMenu();
 
                 input = Console.ReadLine();
 
@@ -27,75 +23,54 @@ namespace Activities_
                 {
                     switch (convertedInput)
                     {
-                        case 1: array_Exs.ExerciseOne(); break;
-                        case 2: array_Exs.ExerciseTwo(); break;
-                        case 3: array_Exs.ExerciseThree(); break;
-                        case 4: array_Exs.ExerciseFour(); break;
-                        case 5: array_Exs.ExerciseFive(); break;
-                        case 6: array_Exs.ExerciseSix(); break;
-                        case 7: matrix_Exs.ExerciseOne(); break;
-                        case 8: matrix_Exs.ExerciseTwo(); break;
-                        case 9: matrix_Exs.ExerciseThree(); break;
-                        case 10: matrix_Exs.ExerciseFour(); break;
-                        case 11: matrix_Exs.ExerciseFive(); break;
-                        case 12: matrix_Exs.ExerciseSix(); break;
-                        case 13: matrix_Exs.ExerciseSeven(); break;
-                        case 14: matrix_Exs.ExerciseEigth(); break;
+                        case 1: Array_Exs.ExerciseOne(); break;
+                        case 2: Array_Exs.ExerciseTwo(); break;
+                        case 3: Array_Exs.ExerciseThree(); break;
+                        case 4: Array_Exs.ExerciseFour(); break;
+                        case 5: Array_Exs.ExerciseFive(); break;
+                        case 6: Array_Exs.ExerciseSix(); break;
+                        case 7: Matrix_Exs.ExerciseOne(); break;
+                        case 8: Matrix_Exs.ExerciseTwo(); break;
+                        case 9: Matrix_Exs.ExerciseThree(); break;
+                        case 10: Matrix_Exs.ExerciseFour(); break;
+                        case 11: Matrix_Exs.ExerciseFive(); break;
+                        case 12: Matrix_Exs.ExerciseSix(); break;
+                        case 13: Matrix_Exs.ExerciseSeven(); break;
+                        case 14: Matrix_Exs.ExerciseEigth(); break;
+                        case 15: Matrix_Exs.ExerciseNine(); break;
+                        case 16: Matrix_Exs.ExerciseTen(); break;
+                        case 17: Matrix_Exs.ExerciseEleven(); break;
+                        case 18: Matrix_Exs.ExerciseTwelve(); break;
                     }
 
                     Console.ReadKey();
-                    PrintMenu();
+                    PrintManager.PrintMenu();
 
                     convertedInput = int.Parse(Console.ReadLine());
                     Console.WriteLine("");
                 }
             }
+            
             catch (IOException)
             {
-                errorManager.PrintError(ErrorManager.IOErrorMsg);
-            }
-            catch (OutOfMemoryException)
-            {
-                errorManager.PrintError(ErrorManager.OutOfMemoryErrorMsg);
-            }
-            catch (ArgumentOutOfRangeException) 
-            {
-                errorManager.PrintError(ErrorManager.OutOfRangeErrorMsg);
+                ErrorManager.PrintError(ErrorManager.IOErrorMsg);
             }
             catch (ArgumentNullException)
             {
-                errorManager.PrintError(ErrorManager.ArgumentNullErrorMsg);
+                ErrorManager.PrintError(ErrorManager.ArgumentNullErrorMsg);
+            }
+            catch (OverflowException) 
+            {
+                ErrorManager.PrintError(ErrorManager.OverFlowErrorMsg);
+            }
+            catch (FormatException)
+            {
+                ErrorManager.PrintError(ErrorManager.FormatExceptionErrorMsg);
             }
             catch (Exception)
             {
-                errorManager.PrintError(ErrorManager.UnknownError);
+                ErrorManager.PrintError(ErrorManager.UnknownError);
             }
-        }
-
-        public static void PrintMenu()
-        {
-            const string Menu = "------------MENU------------";
-            const string InitialMsg = "To access an activity enter wich one you want to access: ";
-            const string MenuMsg = "Exercise {0} (Arrays): ";
-            const string MenuMsgTwo = "Exercise {0} (Matrix): ";
-            const string ExitMsg = "Enter 0 to exit: ";
-            const string Space = "----------------------------";
-            const int AuxNum = 7, AuxNumTwo = 9;
-
-            Console.WriteLine($"\n{Menu} \n{InitialMsg} \n{Space}");
-
-            for (int i = 1; i < AuxNum; i++)
-            {
-                Console.WriteLine(MenuMsg, i);
-            }
-
-            Console.WriteLine(Space);
-
-            for (int i = 1; i < AuxNumTwo; i++)
-            {
-                Console.WriteLine(MenuMsgTwo, i);
-            }
-            Console.WriteLine($"\n{ExitMsg}");
         }
     }
 }

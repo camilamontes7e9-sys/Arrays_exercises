@@ -9,8 +9,8 @@ namespace Array_Exercises.Exercices
     public class Array_Exs
     {
         const string Space = "----------------------------";
-        public Random rnd = new Random();
-        public void ExerciseOne()
+        public static Random rnd = new Random();
+        public static void ExerciseOne()
         {
             const string ArrayMsg = "Array filled with randoms numbers:";
             const string OddArrayMsg = "Odds numbers of the array:";
@@ -89,7 +89,7 @@ namespace Array_Exercises.Exercices
             }
 
         }
-        public void ExerciseTwo()
+        public static void ExerciseTwo()
         {
             const string InitialMsg = "Enter 5 grades of your choice, then it prints also the approved ones";
             const string InputMsg = "Enter a grade: ";
@@ -133,7 +133,7 @@ namespace Array_Exercises.Exercices
             }
 
         }
-        public void ExerciseThree()
+        public static void ExerciseThree()
         {
             const string ArrayMsg = "The array constains: ";
             const string BackArrayMsg = "The array backwards: ";
@@ -155,7 +155,7 @@ namespace Array_Exercises.Exercices
             }
 
         }
-        public void ExerciseFour()
+        public static void ExerciseFour()
         {
             const string ArrayMsg = "The array constains: ";
             const string InputMsg = "Enter the number you want to know the position in the array: ";
@@ -193,7 +193,7 @@ namespace Array_Exercises.Exercices
             }
 
         }
-        public void ExerciseFive()
+        public static void ExerciseFive()
         {
             const string InitialMsg = "The mlutiplication table from 1-10 :";
             const int MatrixSize = 10;
@@ -213,7 +213,7 @@ namespace Array_Exercises.Exercices
             }
         }
 
-        public void ExerciseSix()
+        public static void ExerciseSix()
         {
             const string InitialMsg = "The current notes by students(rows) and subjects(columns) are: ";
             const string AvgStudentMsg = "The average for the {0} student is {1:f2}";

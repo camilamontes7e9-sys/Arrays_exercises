@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Activities_;
+using Array_Exercices.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Activities_;
 
 namespace Array_Exercises.Exercices
 {
     public class Matrix_Exs
     {
         public static Random rnd = new Random();
-        public void ExerciseOne()
+        public static void ExerciseOne()
         {
             const string ArrayMsg = "Array filled with randoms numbers:";
             const string OddArrayMsg = "Odds numbers of the array:";
@@ -48,7 +49,7 @@ namespace Array_Exercises.Exercices
 
             Console.WriteLine();
             Console.WriteLine(OddArrayMsg);
-            foreach (int num in oddNum) 
+            foreach (int num in oddNum)
             {
                 if (num != 0)
                 {
@@ -67,33 +68,37 @@ namespace Array_Exercises.Exercices
             }
 
         }
-        public void ExerciseTwo()
+        public static void ExerciseTwo()
         {
-            string[] pokemonList = { 
-                "Pikachu", "Charmander", 
-                "Squirtle", "Bulbasaur", 
-                "Eevee", "Jigglypuff", 
-                "Meowth", "Psyduck", 
-                "Snorlax", "Gengar", 
-                "Machop", "Magikarp", 
-                "Vulpix", "Onix", "Abra" 
+            string[] pokemonList = {
+                "Pikachu", "Charmander",
+                "Squirtle", "Bulbasaur",
+                "Eevee", "Jigglypuff",
+                "Meowth", "Psyduck",
+                "Snorlax", "Gengar",
+                "Machop", "Magikarp",
+                "Vulpix", "Onix", "Abra"
             };
 
-            string opcion = "";
+            string input = "";
 
 
-            while (opcion != "0")
+            while (input != "0")
             {
                 Console.WriteLine("Choose an option:");
-                Console.WriteLine("1- Llistar pokémons");
+                Console.WriteLine("1- List pokémons");
                 Console.WriteLine("0- Exit");
                 Console.Write("> ");
 
 
-                opcion = Console.ReadLine();
+                input = Console.ReadLine();
 
+                switch (input)
+                {
+                    case "1": break;
+                }
 
-                if (opcion == "1")
+                if (input == "1")
                 {
                     Console.WriteLine("\nYour Pokédex contains:");
                     for (int i = 0; i < pokemonList.Length; i++)
@@ -133,43 +138,98 @@ namespace Array_Exercises.Exercices
                         Console.WriteLine("\nPlease enter a valid number.");
                     }
                 }
-                else if (opcion != "0")
+                else if (input != "0")
                 {
                     Console.WriteLine("\nInvalid option.");
                 }
             }
 
         }
-        public void ExerciseThree()
+        public static void ExerciseThree()
         {
 
         }
-        public void ExerciseFour()
+        public static void ExerciseFour()
         {
 
         }
-        public void ExerciseFive()
+        public static void ExerciseFive()
         {
 
         }
-        public void ExerciseSix()
+        public static void ExerciseSix()
         {
 
         }
-        public void ExerciseSeven()
+        public static void ExerciseSeven()
         {
 
         }
-        public void ExerciseEigth()
+        public static void ExerciseEigth()
         {
 
         }
-        public void ExerciseNine()
+        public static void ExerciseNine()
         {
 
         }
-        public void ExerciseTen()
+        public static void ExerciseTen()
         {
+
+        }
+
+        public static void ExerciseEleven()
+        {
+            const string InputMsg = "Enter the message: ";
+            const string censored = "****";
+            const int ArrayLength = 6;
+
+            string input, convertedInput;
+            string[] prohibitedWords = new string[ArrayLength] {
+         "noob", "uninstall", "trash", "ez", "nigger", "nigga" };
+
+            Console.WriteLine(InputMsg);
+            input = Console.ReadLine();
+            convertedInput = input.ToLower();
+
+            for (int i = 0; i < prohibitedWords.Length; i++)
+            {
+                if (convertedInput.Contains(prohibitedWords[i]))
+                {
+                    convertedInput = convertedInput.Replace(prohibitedWords[i], censored);
+                }
+            }
+
+            Console.WriteLine(convertedInput);
+        }
+        public static void ExerciseTwelve()
+        {
+            const string InputMsg = "Enter a valid password";
+            const string TryAgainMsg = "Please try again";
+
+            string input = "";
+            bool isValid = true;
+            int inputSize;
+
+            Console.WriteLine(InputMsg);
+            input = Console.ReadLine();
+            inputSize = input.Length;
+
+
+            while (isValid && input != "0")
+            {
+                if (input.Length < 3 && input.Length > 16)
+                {
+                    ErrorManager.PrintError(ErrorManager.PassWordOutOfRange);
+                    Console.WriteLine(TryAgainMsg);
+                }
+                else if (input.EndsWith(" "))
+                {
+                    ErrorManager.PrintError(ErrorManager.PassWordOutOfRange);
+                }
+
+
+            }
 
         }
     }
