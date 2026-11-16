@@ -16,10 +16,13 @@ namespace Array_Exercices.Helpers
             const string Space = "----------------------------";
             const int AuxNum = 7, AuxNumTwo = 13;
 
+            int InputNumber = 0;
+
             Console.WriteLine($"\n{Menu} \n{InitialMsg} \n{Space}");
 
             for (int i = 1; i < AuxNum; i++)
             {
+                Console.Write($"{InputNumber +i}. ");
                 Console.WriteLine(MenuMsg, i);
             }
 
@@ -27,6 +30,8 @@ namespace Array_Exercices.Helpers
 
             for (int i = 1; i < AuxNumTwo; i++)
             {
+                InputNumber = 6;
+                Console.Write($"{InputNumber + i}. ");
                 Console.WriteLine(MenuMsgTwo, i);
             }
             Console.WriteLine($"\n{ExitMsg}");

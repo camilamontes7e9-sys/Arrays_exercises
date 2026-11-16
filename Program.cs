@@ -23,24 +23,24 @@ namespace Activities_
                 {
                     switch (convertedInput)
                     {
-                        case 1: Array_Exs.ExerciseOne(); break;
-                        case 2: Array_Exs.ExerciseTwo(); break;
-                        case 3: Array_Exs.ExerciseThree(); break;
-                        case 4: Array_Exs.ExerciseFour(); break;
-                        case 5: Array_Exs.ExerciseFive(); break;
-                        case 6: Array_Exs.ExerciseSix(); break;
-                        case 7: Matrix_Exs.ExerciseOne(); break;
-                        case 8: Matrix_Exs.ExerciseTwo(); break;
-                        case 9: Matrix_Exs.ExerciseThree(); break;
-                        case 10: Matrix_Exs.ExerciseFour(); break;
-                        case 11: Matrix_Exs.ExerciseFive(); break;
-                        case 12: Matrix_Exs.ExerciseSix(); break;
-                        case 13: Matrix_Exs.ExerciseSeven(); break;
-                        case 14: Matrix_Exs.ExerciseEigth(); break;
-                        case 15: Matrix_Exs.ExerciseNine(); break;
-                        case 16: Matrix_Exs.ExerciseTen(); break;
-                        case 17: Matrix_Exs.ExerciseEleven(); break;
-                        case 18: Matrix_Exs.ExerciseTwelve(); break;
+                        case 1: Warming.ExerciseOne(); break;
+                        case 2: Warming.ExerciseTwo(); break;
+                        case 3: Warming.ExerciseThree(); break;
+                        case 4: Warming.ExerciseFour(); break;
+                        case 5: Warming.ExerciseFive(); break;
+                        case 6: Warming.ExerciseSix(); break;
+                        case 7: Exercises.ExerciseOne(); break;
+                        case 8: Exercises.ExerciseTwo(); break;
+                        case 9: Exercises.ExerciseThree(); break;
+                        case 10: Exercises.ExerciseFour(); break;
+                        case 11: Exercises.ExerciseFive(); break;
+                        case 12: Exercises.ExerciseSix(); break;
+                        case 13: Exercises.ExerciseSeven(); break;
+                        case 14: Exercises.ExerciseEigth(); break;
+                        case 15: Exercises.ExerciseNine(); break;
+                        case 16: Exercises.ExerciseTen(); break;
+                        case 17: Exercises.ExerciseEleven(); break;
+                        case 18: Exercises.ExerciseTwelve(); break;
                     }
 
                     Console.ReadKey();
@@ -66,6 +66,10 @@ namespace Activities_
             catch (FormatException)
             {
                 ErrorManager.PrintError(ErrorManager.FormatExceptionErrorMsg);
+            }
+            catch (IndexOutOfRangeException)
+            {
+                ErrorManager.PrintError(ErrorManager.IndexOutOfRangeMsg);
             }
             catch (Exception)
             {

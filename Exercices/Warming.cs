@@ -6,7 +6,7 @@ using Activities_;
 
 namespace Array_Exercises.Exercices
 {
-    public class Array_Exs
+    public class Warming
     {
         const string Space = "----------------------------";
         public static Random rnd = new Random();
