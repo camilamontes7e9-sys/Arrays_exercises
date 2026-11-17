@@ -14,7 +14,7 @@ namespace Array_Exercices.Helpers
             const string MenuMsgTwo = "Exercise {0} (Matrix): ";
             const string ExitMsg = "Enter 0 to exit: ";
             const string Space = "----------------------------";
-            const int AuxNum = 7, AuxNumTwo = 13;
+            const int AuxNum = 7, AuxNumTwo = 14;
 
             int InputNumber = 0;
 

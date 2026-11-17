@@ -337,5 +337,72 @@ namespace Array_Exercises.Exercices
             }
 
         }
+
+        public static void ExerciseThirdteen()
+        {
+            const string DamageDoneMsg = "Damage done: Link {0} | Zelda {1} | Ganon {2}";
+            const string DamageReceivedMsg = "Damage received: Link {0} | Zelda {1} | Ganon {2}";
+            const string RecordMsg = "The record of the damage: ";
+            const string ReportMsg = "The report:";
+            const int RecordSize = 5, DmgSize = 3;
+
+            string[] record = new string[RecordSize]
+            {
+                "Link hits Ganon for 35 damage",
+                "Ganon hits Link for 20 damage",
+                "Link hits Ganon for 50 damage",
+                "Zelda hits Ganon for 40 damage",
+                "Ganon hits Zelda for 25 damage"
+            };
+
+            int[] damage = new int[RecordSize];
+            int[] damageDone = new int[DmgSize];
+            int[] damageReceived = new int[DmgSize];
+
+            int higherDmg = 0;
+
+            Console.WriteLine(RecordMsg);
+            foreach (string msg in record)
+            {
+                Console.WriteLine(msg);
+            }
+
+            for (int i = 0; i < record.Length; i++)
+            {
+                var a = record[i].Where(char.IsDigit);
+                var number = Convert.ToInt32(record[i].Where(char.IsDigit).ToString());
+                damage[i] = number;
+            }
+
+            damageDone[0] = damage[0] + damage[2];
+            damageDone[1] = damage[3];
+            damageDone[2] = damage[1] + damage[4];
+
+            damageReceived[0] = damage[1];
+            damageReceived[1] = damage[4];
+            damageReceived[2] = damage[0] + damage[2] + damage[3];
+
+            for (int i = 0; i < damageDone.Length; i++)
+            {
+                if (higherDmg < damage[i])
+                {
+                    higherDmg = damage[i];
+                }
+            }
+
+            
+
+            Console.WriteLine(ReportMsg);
+
+            Console.Write(DamageDoneMsg);
+            for (int i = 0; i < damageReceived.Length; i++)
+            {
+                Console.Write(damageReceived[i]);
+            }
+
+
+
+
+        }
     }
 }

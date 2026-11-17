@@ -41,6 +41,7 @@ namespace Activities_
                         case 16: Exercises.ExerciseTen(); break;
                         case 17: Exercises.ExerciseEleven(); break;
                         case 18: Exercises.ExerciseTwelve(); break;
+                        case 19: Exercises.ExerciseThirdteen(); break;
                     }
 
                     Console.ReadKey();
