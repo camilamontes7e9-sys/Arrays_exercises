@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Array_Exercices.Helpers;
 using Array_Exercises.Exercices;
-using Array_Exercices.Helpers;
+using System;
+using System.Text;
 
 namespace Activities_
 {
@@ -8,21 +9,25 @@ namespace Activities_
     {
         public static void Main()
         {
+            Console.OutputEncoding = Encoding.UTF8; 
+
             string input = "";
             int convertedInput;
+            bool exit = false;
 
-            try
+            while (!exit)
             {
-                PrintManager.PrintMenu();
-
-                input = Console.ReadLine();
-
-                convertedInput = int.Parse(input);
-
-                while (convertedInput != 0)
+                try
                 {
+                    PrintManager.PrintMenu();
+
+                    input = Console.ReadLine();
+                    convertedInput = int.Parse(input);
+                    Console.WriteLine("");
+
                     switch (convertedInput)
                     {
+                        case 0: exit = true;break;
                         case 1: Warming.ExerciseOne(); break;
                         case 2: Warming.ExerciseTwo(); break;
                         case 3: Warming.ExerciseThree(); break;
@@ -42,39 +47,45 @@ namespace Activities_
                         case 17: Exercises.ExerciseEleven(); break;
                         case 18: Exercises.ExerciseTwelve(); break;
                         case 19: Exercises.ExerciseThirdteen(); break;
+                        default:
+                            ErrorManager.PrintError(ErrorManager.NotValidMsg);
+                            break;
                     }
-
-                    Console.ReadKey();
-                    PrintManager.PrintMenu();
-
-                    convertedInput = int.Parse(Console.ReadLine());
-                    Console.WriteLine("");
+                    if (!exit)
+                    {
+                        Console.ReadKey();
+                    }
                 }
-            }
-            
-            catch (IOException)
-            {
-                ErrorManager.PrintError(ErrorManager.IOErrorMsg);
-            }
-            catch (ArgumentNullException)
-            {
-                ErrorManager.PrintError(ErrorManager.ArgumentNullErrorMsg);
-            }
-            catch (OverflowException) 
-            {
-                ErrorManager.PrintError(ErrorManager.OverFlowErrorMsg);
-            }
-            catch (FormatException)
-            {
-                ErrorManager.PrintError(ErrorManager.FormatExceptionErrorMsg);
-            }
-            catch (IndexOutOfRangeException)
-            {
-                ErrorManager.PrintError(ErrorManager.IndexOutOfRangeMsg);
-            }
-            catch (Exception)
-            {
-                ErrorManager.PrintError(ErrorManager.UnknownError);
+                catch (IOException)
+                {
+                    ErrorManager.PrintError(ErrorManager.IOErrorMsg);
+                    Console.ReadKey();
+                }
+                catch (ArgumentNullException)
+                {
+                    ErrorManager.PrintError(ErrorManager.ArgumentNullErrorMsg);
+                    Console.ReadKey();
+                }
+                catch (OverflowException)
+                {
+                    ErrorManager.PrintError(ErrorManager.OverFlowErrorMsg);
+                    Console.ReadKey();
+                }
+                catch (FormatException)
+                {
+                    ErrorManager.PrintError(ErrorManager.FormatExceptionErrorMsg);
+                    Console.ReadKey();
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    ErrorManager.PrintError(ErrorManager.IndexOutOfRangeMsg);
+                    Console.ReadKey();
+                }
+                catch (Exception)
+                {
+                    ErrorManager.PrintError(ErrorManager.UnknownError);
+                    Console.ReadKey();
+                }
             }
         }
     }

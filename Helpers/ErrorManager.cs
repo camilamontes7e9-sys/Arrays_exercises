@@ -13,6 +13,7 @@ namespace Array_Exercices.Helpers
         public const string ArgumentNullErrorMsg = "\nError, can not accept a null argument";
         public const string FormatExceptionErrorMsg = "\nError, the input must be a valid number, enter an integer number";
         public const string IndexOutOfRangeMsg = "\nInvalid index, out of range of the array";
+        public const string NotValidMsg= "\nNot a valid option, please try again.";
 
         //Exercise 2
         public const string InvalidMsg = "\nInvalid option";

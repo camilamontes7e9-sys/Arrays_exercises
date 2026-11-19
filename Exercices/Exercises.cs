@@ -2,6 +2,7 @@
 using Array_Exercices.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Numerics;
 using System.Text;
 
@@ -151,14 +152,14 @@ namespace Array_Exercises.Exercices
             int[] numbers = new int[ArrayLength];
 
             Console.Write(ArrayMsg);
-            for(int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
             {
                 numbers[i] = rnd.Next(1, 10);
                 Console.Write($"{numbers[i]}, ");
             }
 
             Console.Write(BackArrayMsg);
-            for (int i = ArrayLength -1; i > 0; i--)
+            for (int i = ArrayLength - 1; i > 0; i--)
             {
                 Console.Write($"{numbers[i]}, ");
             }
@@ -197,7 +198,7 @@ namespace Array_Exercises.Exercices
                 }
             }
 
-            if(count > 0)
+            if (count > 0)
             {
                 Console.WriteLine(NumTimesMsg, input, count);
             }
@@ -205,7 +206,7 @@ namespace Array_Exercises.Exercices
             {
                 Console.WriteLine(AppearsMsg, input);
             }
-            
+
 
             Console.Write(ArrayMsg);
             foreach (int num in numbers)
@@ -216,12 +217,12 @@ namespace Array_Exercises.Exercices
             //BubbleSort
             for (int i = 1; i < numbers.Length; i++)
             {
-                for(int j = 0; j < numbers.Length -1; j++) 
+                for (int j = 0; j < numbers.Length - 1; j++)
                 {
-                    if (numbers[j] > numbers[j+1])
+                    if (numbers[j] > numbers[j + 1])
                     {
-                        int aux = numbers[j+1];
-                        numbers[j+1] = numbers[j];
+                        int aux = numbers[j + 1];
+                        numbers[j + 1] = numbers[j];
                         numbers[j] = aux;
                     }
                 }
@@ -237,36 +238,126 @@ namespace Array_Exercises.Exercices
         public static void ExerciseFive()
         {
             const string ShopMsg = "=============== AVALIBLE ITEMS ON THE SHOP ===============";
+            const int MinLvlMin = 1, MinLvlMax = 11;
+            const int PowerMin = 100, PowerMax = 501;
+            const int CostSize = 200, WeigthSize = 10;
             const int ItemSize = 4, ItemNameSize = 7;
-            const int MinLevelSize = 1, MaxLevelSize = 11;
+            const int LevelSize = 11, RareType = 4;
 
-            string[] itemNames = new string[ItemNameSize] 
-            { 
-                "   NAME   ", "LEVEL MIN", "POWER", "WEIGHT", "COST", "RARE ITEM", "RARE TYPE" 
+            string[] itemNames = new string[ItemNameSize]
+            {
+                "NAME", "LEVEL MIN", "POWER", "WEIGHT", "COST", "RARE ITEM", "RARE TYPE"
             };
 
-            string[] items = new string[ItemSize] { "SWORD", "SHIELD", "POTION","ARCH" };
-            int[] levels = new int[MaxLevelSize];
+            string[] items = new string[ItemSize] { "SWORD", "SHIELD", "POTION", "ARCH" };
+            string[] rareTypes = new string[RareType] {"Rare", "Comun", "Legendary", "Ordinary" };
+            int[] levels = new int[LevelSize];
 
+            int minLevel, power;
+            double weight, cost;
+            string rareType, item;
+            bool isRareItem;
 
-            foreach(string name in itemNames)
+            foreach (string name in itemNames)
             {
-                Console.WriteLine($"{name}\t");
+                Console.Write($"{name}  ");
             }
 
-            Console.Write(items[0]);
+            Console.WriteLine($"\n{PrintManager.Space}{PrintManager.Space}");
 
+            for (int i = 0; i < items.Length; i++)
+            {
+                item = items[i];
+                minLevel = rnd.Next(MinLvlMin, MinLvlMax);
+                power = rnd.Next(PowerMin, PowerMax);
+                weight = Math.Round(rnd.NextDouble() * WeigthSize, 1);
+                cost = Math.Round(rnd.NextDouble() * CostSize, 2);
+                isRareItem = rnd.Next(2) == 1;
 
-
-
+                if (isRareItem)
+                {
+                    rareType = rareTypes[rnd.Next(3)];
+                }
+                else
+                {
+                    rareType = rareTypes[rareTypes.Length];
+                }
+                Console.WriteLine($"{items[i]}\t{minLevel}\t{power}\t{weight}kg\t{cost}€\t{isRareItem}\t{rareType}");
+                rareType = "";
+            }
         }
         public static void ExerciseSix()
         {
+            const int TropesSize = 10, MapSize = 5, regionOneSize = 4, regionTwoSize = 2, regionThreeSize = 3;
 
+            string[] tropes = new string[TropesSize];
+            string[,] map = new string[MapSize, MapSize];
+            string[][] regions =
+            {
+                new string[regionOneSize],
+                new string[regionTwoSize],
+                new string[regionThreeSize]
+            };
+
+            for(int i = 0; i < tropes.Length; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    tropes[i] = "🛡️";
+                }
+                else
+                {
+                    tropes[i] = "⚔️";
+                }
+                Console.Write($"{tropes[i]} ");
+            }
+            Console.WriteLine("\n");
+
+            for(int i = 0; i < map.GetLength(0); i++)
+            {
+                for(int j = 0; j < map.GetLength(1); j++)
+                {
+                    if(i % 2 == 0 && j % 2 == 0)
+                    {
+                        map[i, j] = "🗼";
+                    }
+                    else if (i % 2 != 0 && j % 2 != 0)
+                    {
+                        map[i, j] = "🕳️";
+                    }
+                    else
+                    {
+                        map[i, j] = "🌿";
+                    }
+                    Console.Write($"{map[i, j]} ");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("");
+
+            for(int i = 0; i < regions.Length; i++)
+            {
+                for (int j = 0; j < regions[i].Length; j++)
+                {
+                    if((i + j) % 2 == 0)
+                    {
+                        regions[i][j] = "➖";
+                    }
+                    else
+                    {
+                        regions[i][j] = "💎";
+                    }
+                    Console.Write($"{regions[i][j]} ");
+                }
+                Console.WriteLine();
+            }
         }
         public static void ExerciseSeven()
         {
+            const int MapSize = 10;
 
+            string[,] map = new string[MapSize, MapSize];
         }
         public static void ExerciseEigth()
         {
@@ -288,9 +379,9 @@ namespace Array_Exercises.Exercices
             const int ArrayLength = 6;
 
             string input, convertedInput;
-            string[] prohibitedWords = new string[ArrayLength] 
+            string[] prohibitedWords = new string[ArrayLength]
             {
-                "noob", "uninstall", "trash", "ez", "nigger", "nigga" 
+                "noob", "uninstall", "trash", "ez", "nigger", "nigga"
             };
 
             Console.WriteLine(InputMsg);
@@ -342,9 +433,9 @@ namespace Array_Exercises.Exercices
         {
             const string DamageDoneMsg = "Damage done: Link {0} | Zelda {1} | Ganon {2}";
             const string DamageReceivedMsg = "Damage received: Link {0} | Zelda {1} | Ganon {2}";
-            const string RecordMsg = "The record of the damage: ";
+            const string RecordMsg = "The record of the damage: {0}";
             const string ReportMsg = "The report:";
-            const int RecordSize = 5, DmgSize = 3;
+            const int RecordSize = 5;
 
             string[] record = new string[RecordSize]
             {
@@ -355,54 +446,57 @@ namespace Array_Exercises.Exercices
                 "Ganon hits Zelda for 25 damage"
             };
 
-            int[] damage = new int[RecordSize];
-            int[] damageDone = new int[DmgSize];
-            int[] damageReceived = new int[DmgSize];
+            int maxDmg = 0;
+            string mvp = "";
 
-            int higherDmg = 0;
+            foreach (string line in record)
+            {
+                Console.WriteLine(line);
+            }
 
-            Console.WriteLine(RecordMsg);
+            string[] names = new string[3] { "Link", "Zelda", "Ganon" };
+
+            int[][] characters =
+            {
+                new int[] { 0, 0 }, // Link
+                new int[] { 0, 0 }, // Zelda
+                new int[] { 0, 0 }  // Ganon
+            };
+
             foreach (string msg in record)
             {
-                Console.WriteLine(msg);
-            }
+                string[] line = msg.Split(' ');
 
-            for (int i = 0; i < record.Length; i++)
-            {
-                var a = record[i].Where(char.IsDigit);
-                var number = Convert.ToInt32(record[i].Where(char.IsDigit).ToString());
-                damage[i] = number;
-            }
-
-            damageDone[0] = damage[0] + damage[2];
-            damageDone[1] = damage[3];
-            damageDone[2] = damage[1] + damage[4];
-
-            damageReceived[0] = damage[1];
-            damageReceived[1] = damage[4];
-            damageReceived[2] = damage[0] + damage[2] + damage[3];
-
-            for (int i = 0; i < damageDone.Length; i++)
-            {
-                if (higherDmg < damage[i])
+                for(int i = 0; i < characters.Length; i++)
                 {
-                    higherDmg = damage[i];
+                    int damage = Convert.ToInt32(line[4]);
+
+                    if (line[0] == names[i])
+                    {
+                        characters[i][0] += damage;
+                    }
+
+                    if (line[2] == names[i])
+                    {
+                        characters[i][1] += damage;
+                    }
+
+                }
+
+                for (int i = 0; i < characters.Length; i++)
+                {
+                    if (characters[i][0] > maxDmg)
+                    {
+                        maxDmg = characters[i][0];
+                        mvp = names[i];
+                    }
                 }
             }
 
-            
-
-            Console.WriteLine(ReportMsg);
-
-            Console.Write(DamageDoneMsg);
-            for (int i = 0; i < damageReceived.Length; i++)
-            {
-                Console.Write(damageReceived[i]);
-            }
-
-
-
-
+            Console.WriteLine($"\n{ReportMsg}");
+            Console.WriteLine(DamageDoneMsg, characters[0][0], characters[1][0], characters[2][0]);
+            Console.WriteLine(DamageReceivedMsg, characters[0][1], characters[1][1], characters[2][1]);
+            Console.WriteLine(RecordMsg, mvp);
         }
     }
 }

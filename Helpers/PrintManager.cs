@@ -6,14 +6,14 @@ namespace Array_Exercices.Helpers
 {
     public class PrintManager
     {
+        public const string Space = "----------------------------";
         public static void PrintMenu()
         {
-            const string Menu = "------------MENU------------";
+            const string Menu = "\n------------MENU------------";
             const string InitialMsg = "To access an activity enter wich one you want to access: ";
             const string MenuMsg = "Exercise {0} (Arrays): ";
             const string MenuMsgTwo = "Exercise {0} (Matrix): ";
             const string ExitMsg = "Enter 0 to exit: ";
-            const string Space = "----------------------------";
             const int AuxNum = 7, AuxNumTwo = 14;
 
             int InputNumber = 0;
