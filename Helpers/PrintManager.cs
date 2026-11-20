@@ -7,9 +7,10 @@ namespace Array_Exercices.Helpers
     public class PrintManager
     {
         public const string Space = "----------------------------";
+        public const string Menu = "\n------------MENU------------";
         public static void PrintMenu()
         {
-            const string Menu = "\n------------MENU------------";
+            
             const string InitialMsg = "To access an activity enter wich one you want to access: ";
             const string MenuMsg = "Exercise {0} (Arrays): ";
             const string MenuMsgTwo = "Exercise {0} (Matrix): ";
@@ -35,6 +36,17 @@ namespace Array_Exercices.Helpers
                 Console.WriteLine(MenuMsgTwo, i);
             }
             Console.WriteLine($"\n{ExitMsg}");
+        }
+
+        public static void PrinteMenuExSeven()
+        {
+            const string OptionOneMsg = "1 - I want to dig!";
+            const string OptionTwoMsg = "2 - Display the map on the screen";
+            const string ExitMsg = "3 - Sortir";
+
+            Console.WriteLine(OptionOneMsg);
+            Console.WriteLine(OptionTwoMsg);
+            Console.WriteLine(ExitMsg);
         }
     }
 }

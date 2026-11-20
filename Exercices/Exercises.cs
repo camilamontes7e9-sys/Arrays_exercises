@@ -355,9 +355,52 @@ namespace Array_Exercises.Exercices
         }
         public static void ExerciseSeven()
         {
-            const int MapSize = 10;
+            const string InitialMsg = "Welcome to the treasure explorer game! \r" +
+                "\nA 10x10 map with hidden treasures has been generated, and you have 3 attempts to collect as many diamonds as possible…";
+            const int MapSize = 10, RandomChance = 2;
 
             string[,] map = new string[MapSize, MapSize];
+
+            int randomNum, tries = 0;
+            string input;
+            bool exit = false;
+
+            Console.WriteLine(InitialMsg);
+
+            while (!exit || tries == 3)
+            {
+                PrintManager.PrinteMenuExSeven();
+                input = Console.ReadLine();
+
+                switch (input)
+                {
+                    case "1":
+                        for (int i = 0; i < map.GetLength(0); i++)
+                        {
+                            for (int j = 0; j < map.GetLength(1); j++)
+                            {
+                                randomNum = rnd.Next(RandomChance);
+
+                                if (randomNum == 0)
+                                {
+                                    map[i, j] = "0";
+                                }
+                                else
+                                {
+                                    map[i, j] = "*";
+                                }
+
+
+                            }
+                        }
+                        break;
+                    case "0": exit = true; break;
+                }
+
+            }
+           
+            
+
         }
         public static void ExerciseEigth()
         {
